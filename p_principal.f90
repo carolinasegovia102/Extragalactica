@@ -3,8 +3,7 @@ program Principal
 
     real :: resultado
     real, external :: integrando
-
-    resultado = integrando(0.01)
+    call qromb(integrando, 0, 1, resultado)
 
     print *, "Resultado = ", resultado
 
@@ -27,6 +26,9 @@ function integrando(z)
     integrando = c/H0*l*sqrt(r0*(1.+z)**4 + m0*(1.+z)**3 + k0*(1.+z)**2 + lambda0)
 end function integrando
 
-! include "qromb.f"
+
+include "polint.f"
+include "trapzd.f"
+include "qromb.f"
 
 
